@@ -1,0 +1,17 @@
+{
+    "name": "danielozeh/laravel-microservices",
+    "autoload": {
+        "psr-4": {
+            "Danielozeh\\LaravelMicroservices\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniel Ozeh",
+            "email": "danielozeh@gmail.com"
+        }
+    ],
+    "require": {
+        "vladimir-yuldashev/laravel-queue-rabbitmq": "^13.3"
+    }
+}
