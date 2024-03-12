@@ -20,7 +20,7 @@ class SendUserCreatedNotification implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(User $user)
+    public function __construct($user)
     {
         $this->user = $user;
     }

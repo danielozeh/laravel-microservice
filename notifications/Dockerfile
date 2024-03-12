@@ -30,7 +30,6 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN docker-php-ext-install pdo pdo_mysql
 RUN docker-php-ext-configure gd
 RUN docker-php-ext-install gd
-RUN docker-php-ext-install sockets
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -40,18 +39,18 @@ RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Copy existing application directory contents
-COPY . /var/www
+COPY . /var/www/notifications
 
 # Copy existing application directory permissions
-COPY --chown=www:www . /var/www
+COPY --chown=www:www/notifications . /var/www/notifications
 
 
-RUN composer install
+# RUN composer install --ignore-platform-req=ext-sockets
 
 # Change current user to www
 USER www
 
 # Expose port 9000 and start php-fpm server
-EXPOSE 8000
-CMD "php artisan migrate"
+EXPOSE 8001
 CMD ["php-fpm"]
+CMD ["php", "artisan", "broker:listen"]

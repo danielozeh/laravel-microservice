@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Core\UserService;
 use App\Jobs\SendUserCreatedNotification;
 use App\Library\Master;
 use App\Models\User;
@@ -11,15 +12,17 @@ use Throwable;
 
 class UserController extends Controller
 {
+
+    protected $user;
+
+    public function __construct(UserService $user) {
+        $this->user = $user;
+    }
     public function createUser(CreateUserRequest $request) {
+
         try {
-            $user = User::create($request->validated());
-
-            dispatch(new SendUserCreatedNotification($user));
-
-            return Master::successResponse('User created successfully', $user, 201);
+            return $this->user->createUser($request);
         } catch (Throwable $ex) {
-            // error_log('Here');
             if (Master::hasDebug()) {
                 return Master::exceptionResponse($ex, 'UserController.createUser');
             }
