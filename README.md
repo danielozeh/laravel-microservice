@@ -27,7 +27,10 @@ copy the `.env.example` into `.env`
 - Run the project using: `docker-compose up -d`
 
 The above will expose the user service on port 8000
-visit `http://127.0.0.1:8000` to access the service
+
+To test the project, send a `POST` request to `http://127.0.0.1:8000/api/user`
+OR
+visit `http://127.0.0.1:8000` to access the web service
 
 After testing, the data is logged to a file in storage/public/users.json
 
@@ -54,3 +57,9 @@ Login Credentials
 username: dgjudcss
 password: GBC5eqrORPmAVvp0XIDTr4JdEkAlzi4W
 ```
+
+
+### References
+- [Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-set-up-laravel-nginx-and-mysql-with-docker-compose-on-ubuntu-20-04)
+- [Dev.to](https://dev.to/sanajitjana/form-example-in-laravel-8-45oc)
+- [Phoenix](https://phoenixnap.com/kb/laravel-docker)
