@@ -20,7 +20,7 @@ There are two folders in this project (users and notifications)
 
 ### For users
 Make sure you have docker installed on your machine
-copy the .env.example into .env
+copy the `.env.example` into `.env`
 
 - Navigate into the users folder: `cd users`
 - Build the project using docker: `docker-compose build`
@@ -33,9 +33,9 @@ After testing, the data is logged to a file in storage/public/users.json
 
 
 ### For notifications
-copy the .env.example file into .env
+copy the `.env.example` file into `.env`
 
-- Navigate into the users folder: `cd notifications`
+- Navigate into the notications folder: `cd notifications`
 - Build the project using docker: `docker-compose build`
 - Run the project using: `docker-compose up -d`
 
